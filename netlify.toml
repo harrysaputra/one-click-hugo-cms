@@ -1,10 +1,24 @@
+# [build]
+#  command = "yarn build"
+#  publish = "dist"
+
+# [context.deploy-preview]
+#  command = "yarn build:preview"
+
 [build.environment]
   YARN_VERSION = "1.12.1"
   NPM_VERSION = "6.4.1"
 
 [build]
-  command = "yarn build"
-  publish = "dist"
+  base = "exampleSite"
+  command = "hugo --gc --themesDir ../.. -b $URL"
+  publish = "exampleSite/public"
+
+[build.environment]
+  HUGO_THEME = "repo"
 
 [context.deploy-preview]
-  command = "yarn build:preview"
+  command = "hugo --gc --themesDir ../.. -b $DEPLOY_PRIME_URL"
+
+[context.branch-deploy]
+  command = "hugo --gc --themesDir ../.. -b $DEPLOY_PRIME_URL"
