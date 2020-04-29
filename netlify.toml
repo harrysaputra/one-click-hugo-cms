@@ -15,7 +15,7 @@
   publish = "exampleSite/public"
 
 [build.environment]
-  HUGO_THEME = "repo"
+  HUGO_THEME = "hermit"
 
 [context.deploy-preview]
   command = "hugo --gc --themesDir ../.. -b $DEPLOY_PRIME_URL"
